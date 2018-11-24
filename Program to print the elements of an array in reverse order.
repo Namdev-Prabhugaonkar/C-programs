@@ -1,0 +1,42 @@
+ Task:
+Given an array, "arr", of  n integers, print arr's elements in reverse order as a single line of space-separated numbers.
+
+Input Format
+The first line contains an integer,n  (the size of our array).  The second line contains n space-separated integers describing array arr’s elements.
+
+----------------------------------------------------------------------------------
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+*/
+#include<stdio.h>
+#include<iostream>
+#include<string.h>
+#include<array>
+// 
+using namespace std;
+int main()
+{
+    int n;
+    int s;
+    cout<<"Enter length of array:" <<endl;
+    cin >> n;
+    
+    int arr[n];
+int a[n];
+    for (int i = 0; i < n; i++) {
+        cout<<"Enter value of a["<<i<<"]:";
+        cin>>s;
+        arr[i] = s;
+        //cout << arr[i] <<" "       
+    }
+cout<<"Array after reversing the elements"<<endl;
+    for (int i = n-1; i >= 0; i--) {
+      a[i - n] = arr[i];
+      cout << a[i - n] << " ";
+    }
+    return 0;
+}
+
+
+
