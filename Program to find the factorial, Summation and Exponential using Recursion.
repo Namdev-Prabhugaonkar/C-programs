@@ -1,0 +1,77 @@
+Task:
+Write a factorial function that takes a positive integer 'n; ,  as a parameter and prints the result of n!
+AND a exponential function that takes the value of base 'p 'and power 'q' and returns the exponential result.
+AND a function which takes a number 's' and returns its summation.
+
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+*/
+#include<stdio.h>
+#include<string>
+#include<iostream>
+
+ 
+//Function to find Factorial
+ int factorial(int n) {
+if(n<=0)
+{
+    return 1;
+}
+else{
+    return n*factorial(n-1);
+}
+
+}
+//
+////Function to find summation
+  int summation(int s){
+    if(s<=0){
+        return 0;
+    }
+    else{
+        return s+summation(s-1);
+    }
+}
+  
+ //Function to find exponential
+  int exponention(int p,int q){
+      if(q<=0){
+          return 1;
+      }
+      else{
+          return p * exponention(p,q-1);
+      }
+  }
+
+using namespace std;
+int main()
+{
+  
+    //Function call to find Factorial
+
+    int s;
+    
+    cout<<"Enter the value of number to find summation:"<<endl;
+    cin>>s;
+    int result2= summation(s);
+    cout<<"The value of summation of "<<s<<" is: "<<result2<<endl;
+    
+    //Function call to find Exponentiation
+    int p,q;
+    cout<<"Enter the bast digit and power digit number to find exponential: "<<endl;
+    cin>>p;
+    cin>>q;
+    int result3=exponention(p,q);
+    cout<<"The value of exponential "<<"is: "<<result3<<endl;
+
+ //Function call to find summation   
+        int n;
+    cout<<"Enter the value of n to find summation: "<<endl;
+    cin >> n;
+    int result = factorial(n);
+    cout<<"The value of "<<n<<"! is:"<<result<<endl;
+    
+    
+   return 0;
+}
