@@ -1,0 +1,47 @@
+Task:
+Given a base- 10 integer, n , convert it to binary (base-2). Then find and print the base-10 integer denoting the maximum number of consecutive 1's in n's binary representation.
+
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+*/
+
+
+#include<stdio.h>
+#include<iostream>
+using namespace std;
+
+
+
+int main()
+{
+    int n;
+    cout<<"Enter the number: "<<endl;
+    cin >> n;
+    int rem=0;
+    int t=0;
+    int s=0;
+    while(n!=0){
+    {
+        rem=n%2;
+        n=n/2;
+        if(rem==1)
+         {   s++;
+           if(s>=t)
+
+            t=s;
+
+        }
+        else{
+
+            s=0;
+        }   
+    }
+    }
+    
+    cout<<"The longest stream of 1's is of lenght: "<<t<<endl;
+    return 0;
+}
+
+
+
