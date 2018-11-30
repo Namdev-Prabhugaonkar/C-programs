@@ -1,0 +1,59 @@
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+*/
+
+//Program to create a class to store books 
+
+#include<stdio.h>
+#include<string.h>
+#include<iostream>
+
+using namespace std; 
+
+class Bookcat{
+    public:
+    int ISBN;
+    int pagecount;
+    string title;
+    
+     Bookcat(string Booktitle,int bookISBN ,int bookpagecount ){
+     this->ISBN=bookISBN;
+     this->title=Booktitle;
+     this->pagecount=bookpagecount;
+    }
+    
+     
+     //Getters
+     string gettitle(){
+         return this->title;
+     }
+     
+     int getISBN(){
+         return this->ISBN;
+     }
+     
+     int getpagecount(){
+         return this->pagecount;
+     }
+     
+     
+     //setters
+     
+    
+};
+
+ 
+
+
+int main()
+{
+    Bookcat book1("nam",123,345);
+    Bookcat book2("Dev",35,234);
+    cout<<"Name: "<<book1.gettitle()<<endl;
+    cout<<"Page count: "<<book1.getpagecount()<<endl;
+    cout<<"ISBN: "<<book1.getISBN();
+    
+    
+    
+}
