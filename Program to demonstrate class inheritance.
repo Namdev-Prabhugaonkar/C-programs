@@ -48,8 +48,11 @@ cout<<"Price: "<<price<<endl;
 int main() {
     string title,author;
     int price;
+    cout<<"Enter the book title: ";
     getline(cin,title);
+    cout<<"Enter the author name: ";
     getline(cin,author);
+    cout<<"Enter the price: ";
     cin>>price;
     MyBook novel(title,author,price);
     novel.display();
