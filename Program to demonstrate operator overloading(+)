@@ -1,0 +1,93 @@
+Task: Program to demonsrate operator overloading of unary operator +.
+
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+*/
+
+
+
+
+#include<iostream>
+#include<string>
+
+using namespace std;
+class clockType{
+private:
+    int hr;
+    int min;
+    int sec;
+    
+public:
+    void sethour(int hour){
+        hr=hour;
+    }
+    
+    void setmin(int minute){
+        min=minute;
+    }
+    
+    void setsec(int seconds){
+        sec=seconds;
+    }
+    
+         clockType operator+(const clockType& b) {
+         clockType c;
+         c.hr = this->hr + b.hr;
+         
+         c.sec = this->sec + b.sec;
+         if(c.sec>60){
+             c.min=c.min+1;
+             c.sec=c.sec-60;
+         }
+         c.min = this->min + b.min;
+         if(c.min>60){
+             c.hr=c.hr+1;
+             c.min=c.min-60;
+         }
+         
+         
+         return c;
+      }
+      
+         void print(){
+             cout<<hr<<"hours "<<min<<"mins "<<sec<<"sec"<<endl;
+         }
+    
+};
+  int clockadd(int c1,int c2){
+        
+        int c3=c1+c2;
+        return c3;
+    }
+
+int main(){
+    clockType c1,c2,c3,c4;
+    
+    c1.sethour(05);
+    c1.setmin(34);
+    c1.setsec(43);
+    
+    c2.sethour(04);
+    c2.setmin(43);
+    c2.setsec(51);
+   
+    cout<<"c1=";
+            c1.print();
+    cout<<endl;
+    cout<<"c2=";
+    c2.print();
+     cout<<endl;
+     c3=c1+c2;
+      cout<<"c1+c2=";
+     c3.print();
+     cout<<endl;
+     c4=c1+c1;
+     cout<<"c1+c1=";
+     c4.print();
+     
+  
+    
+}
+
+
