@@ -1,0 +1,57 @@
+Task: Program to demonstrate how to add elements at the beginning of the linked list.
+
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+*/
+
+#include<iostream>
+#include<string>
+#include<stdlib.h>
+
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node * next;
+};
+
+Node * head;
+
+void Insert(int x) {
+    Node * temp = new Node();
+    temp->data = x;
+    temp->next =head;
+    head = temp;
+}
+
+void Print() {
+    Node * temp = head;
+    cout << "Print list:";
+    
+    while (temp!= NULL) {
+        cout << temp->data;
+        temp = temp->next;
+        cout << " ";
+    }
+    
+    cout << endl;
+
+}
+
+int main() {
+    head = NULL;
+    int x, n;
+    cout << "How many numbers??" << endl;
+    cin>>n;
+
+    for (int i = 0; i < n; i++) {
+        cout << "Enter the number:";
+        cin>>x;
+        Insert(x);
+        Print();
+    }
+
+    return 0;
+}
