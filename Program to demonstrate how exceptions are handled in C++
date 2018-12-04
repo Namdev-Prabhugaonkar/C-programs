@@ -1,0 +1,25 @@
+Task: Program to convert a number into an integer. The program handles the exception which is thrown when characters are 
+entered by the user. The program only accepts a number and converts it to integer datatype. 
+
+
+#include<iostream>
+#include<string>
+#include<stdlib.h>
+
+#
+using namespace std;
+
+int main() {
+    string S;
+    cin >> S;
+    int n;
+    try {
+        n = stoi(S);
+        cout << "Number successfully converted to integer. n= " << n;
+    } catch (exception msg) {
+        cout << "Bad String. Cannot be converted to integer.";
+    }
+
+    return 0;
+}
+
