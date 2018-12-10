@@ -1,0 +1,51 @@
+Task: The program is used to find the power of 2 positive integers and throws and exceptions if either of the two
+number is negative. Exception is handled using Throw.
+
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+ *
+ * Created on December 9, 2018, 7:25 PM
+ */
+
+#include <cmath>
+#include <iostream>
+#include <exception>
+#include <stdexcept>
+using namespace std;
+
+//Write your code here
+
+class Calculator {
+public:
+    //int n,p;
+    int pwr;
+
+    int power(int n, int p) {
+        if (n < 0 || p < 0) {
+            throw runtime_error("n and p should be non-negative");
+        }
+        pwr = pow(n, p);
+        return pwr;
+    }
+};
+
+int main() {
+    cout << "Program to find a^b" << endl;
+    Calculator myCalculator = Calculator();
+    int T, n, p;
+    cout << "Enter the number of test case: ";
+    cin>>T;
+    while (T-- > 0) {
+        cout << "Enter the 2 numbers: ";
+        if (scanf("%d %d", &n, &p) == 2) {
+            try {
+                int ans = myCalculator.power(n, p);
+                cout << "Answer: " << ans << endl;
+            } catch (exception& e) {
+                cout << e.what() << endl;
+            }
+        }
+    }
+
+}
