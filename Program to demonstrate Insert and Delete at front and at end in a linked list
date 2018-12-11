@@ -1,0 +1,192 @@
+Task: Program to insert elements at front and back . And deletion of elements at front and at the back.
+
+
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+ *
+ * Created on December 10, 2018, 8:25 PM
+ */
+
+#include <cstdlib>
+#include <stdio.h>
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+
+class student{
+public:
+    student(){
+        this->id=0;
+        this->name="";
+    }
+    
+    student(string name,int id){
+        this->name=name;
+        this->id=id;
+    }
+    
+    string getname(){
+        return name;
+    }
+    
+    string setid(int id){
+        this->id = id;
+    }
+    int getID(){
+      return id;
+      }
+    
+   
+    
+private:
+    int id;
+    string name;  
+    
+} ;
+
+class Node {
+public :
+    Node(){
+        stu=student();
+        next=NULL;
+    }
+    
+    
+
+    Node(student s) {
+        next = NULL;
+        stu = s;
+    }
+
+    
+    void setNext(Node *p){
+        next= p;
+    }
+    
+    Node *getNext(){
+        return next;
+    }
+    void setStudent(student s)
+       {
+      stu = s;
+      }
+    student getStudent(){
+        return stu;
+    }
+    
+  
+    
+private:
+    student stu;
+    Node * next;
+   // Node * temp;
+    
+};
+
+class studentDB
+{
+public:
+    
+studentDB()
+ {
+   head = NULL;
+}
+  void insert_front(Node *s)
+  {
+   if (head == NULL) 
+ {
+   head = s;
+   s->setNext(NULL);
+   }
+ else
+ {
+ s->setNext(head);
+ head = s;
+ }
+ }
+  
+  /*Insert at Back*/
+void insert_back(Node * s){
+Node* temp=head;
+while( temp->getNext()!=NULL){
+temp=temp->getNext();
+}
+temp->setNext(s);
+s->setNext(NULL);
+}
+
+/*Delete at back*/
+void delete_back(){
+Node* temp=head;
+while(temp->getNext()->getNext()!=NULL){
+temp=temp->getNext();
+}
+Node* temp2=temp->getNext(); 
+temp->setNext(NULL);
+cout<<"Deleted element is :"<<temp2->getStudent().getID()<<endl;
+delete temp2;
+}
+
+/*Delete at front*/
+void delete_front(){
+Node* temp=head;
+head=(head->getNext());
+cout<<"Deleted element is :"<<temp->getStudent().getID()<<endl;
+delete temp;
+}
+void print() {
+        Node *temp = head;
+if (head != NULL)
+{
+while (temp != NULL)
+{
+cout << temp->getStudent().getID() << endl;
+temp = temp->getNext();
+}
+}
+}
+private:
+Node *head;
+};
+
+
+int main() {
+    student s1("a",1);
+   student s2("b",2);
+    student s3("c",3);
+    student s4("d", 10);
+
+   Node * node1=new Node(s1);
+   Node * node2=new Node(s2);
+   Node * node3=new Node(s3);
+   Node * node4= new Node(s4);
+    
+    studentDB obj;
+    obj.insert_front(node1);
+    obj.insert_front(node2);
+    obj.insert_front(node3);
+    
+    obj.insert_back(node4);
+
+obj.print();
+obj.delete_back();
+
+obj.print();
+obj.delete_front();
+
+obj.print();
+
+//system("pause");
+return 0;
+
+
+    obj.print();
+    
+    return 0;
+}
+    
+
+
