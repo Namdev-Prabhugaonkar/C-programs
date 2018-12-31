@@ -1,0 +1,35 @@
+Input format: dd mm yyyy followed by dd mm yyyy on next line. 
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    long return_date, return_month, return_year;
+    long expected_date, expected_month, expected_year;
+    cin >> return_date;
+    cin >> return_month;
+    cin >> return_year;
+    cin >> expected_date;
+    cin >> expected_month;
+    cin >> expected_year;
+
+    int fine = 0;
+
+    int dyear = return_year - expected_year;
+    int dmon = return_month - expected_month;
+    int dday = return_date - expected_date;
+
+    if (dyear > 0) {
+        fine = 10000;
+    } else if (dmon > 0 && dyear == 0) {
+        fine = 500 * dmon;
+    } else if (dday > 0 && dmon == 0) {
+        fine = 15 * dday;
+    }
+
+    cout << fine << endl;
+}
