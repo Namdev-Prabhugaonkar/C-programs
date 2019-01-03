@@ -1,0 +1,46 @@
+
+Program which takes in name and email id of a person and then sorts the name of people in alphabetical order who have 
+@gmail.com in their email id.
+
+Input format: number : to indicate no of people
+name followed by email id .
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <regex>
+
+using namespace std;
+
+vector<string> split_string(string);
+
+int main() {
+    int N;
+    cin >> N;
+    vector <string> database;
+    regex re(".+@gmail\\.com$");
+
+    for (int i = 0; i < N; i++) {
+        string firstName;
+        string emailID;
+        cin >> firstName >> emailID;
+        if (regex_match(emailID, re)) {
+
+            database.push_back(firstName);
+
+        }
+        sort(database.begin(), database.end());
+
+    }
+    for (auto i : database) {
+
+        cout << i << endl;
+    }
+
+    return 0;
+}
+
+
+
