@@ -1,0 +1,116 @@
+
+
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+ *
+ * Created on January 12, 2019, 4:34 PM
+ */
+
+#include <cstdlib>
+#include<iostream>
+
+using namespace std;
+
+/*
+ * 
+ */
+
+int cal_average(int a, int b, int c) {
+    int avrg = (a + b + c) / 3;
+    return avrg;
+}
+
+float cal_percentage(float a, float b) {
+    float percentage = a / b * 100;
+    return percentage;
+}
+
+void print_line(char a, int b) {
+    for (int i = 0; i < b; i++) {
+        printf("%c", a);
+    }
+}
+
+char cal_grade(float percentage) {
+    if (percentage > 90) {
+        return 'A';
+    }
+    else if (percentage > 80 && percentage < 90) {
+        return 'B';
+    }
+    else if (percentage > 70 && percentage < 80) {
+        return 'C';
+    }
+    else {
+        return 'F';
+    }
+}
+
+int main() {
+
+    int option = 0;
+    float max = 300;
+    char name4[32] = {0};
+    float aa;
+    float bb;
+    float cc;
+
+    // bool is a variable that can either be true or false
+    // We set this to false, and later set it to true when user enters their name
+    bool name_entered = false;
+    bool score_entered = false;
+
+
+    while (1) {
+        printf("1. Enter name\n");
+        printf("2. Display name\n");
+        printf("3. Enter the marks of 3 subjects\n");
+        printf("4. Display Summary\n");
+        printf("5. Quit\n");
+        scanf("%i", &option);
+
+        if (1 == option) {
+            name_entered = true;
+            printf("Enter your name: ");
+            scanf("%s", name4);
+        } else if (2 == option) {
+            if (name_entered == true) {
+                printf("Your name is: %s\n", name4);
+                print_line('*', 32);
+                puts(" ");
+            } else {
+                printf("Please use the menu to enter your name first.\n");
+                print_line('*', 32);
+                puts(" ");
+
+
+            }
+        } else if (option == 3) {
+            scanf("%f%f%f", &aa, &bb, &cc);
+            score_entered = true;
+
+        } else if (option == 4) {
+            if (name_entered == true && score_entered == true) {
+                float total = aa + bb + cc;
+                printf("Your name is %s and the average of 4 subjects is %i and with the percentage of %0.2f \n", name4, cal_average(aa, bb, cc), cal_percentage(total, max));
+                // int per=cal_percentage(total,max);
+                printf("You got %c grade in this subject. \n", cal_grade(cal_percentage(total, max)));
+                print_line('*', 32);
+                puts(" ");
+            } else {
+                printf("Enter the data first!\n");
+                print_line('*', 32);
+                puts(" ");
+            }
+        } else if (option == 5) {
+            break;
+        } else {
+            continue;
+        }
+    }
+
+    return 0;
+
+}
+
