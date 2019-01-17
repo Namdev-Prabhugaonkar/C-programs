@@ -1,0 +1,29 @@
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+ *
+ * Created on January 16, 2019, 4:34 PM
+ */
+
+#include <cstdlib>
+#include<iostream>
+
+using namespace std;
+
+void swap(int *x, int*y) {
+    int copy_x = *x;
+    *x = *y;
+    *y = copy_x;
+}
+
+int main() {
+    int a = 1;
+    int b = 2;
+
+    printf("Before Swap,A=%i B=%i\n", a, b);
+    swap(&a, &b);
+    printf("After Swap,A=%i B=%i\n", a, b);
+
+
+    return 0;
+}
