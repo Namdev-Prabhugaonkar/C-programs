@@ -1,0 +1,47 @@
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+ *
+ * Created on January 18, 2019, 2:34 PM
+ */
+
+#include <cstdlib>
+#include<iostream>
+
+typedef struct {
+    int age;
+    int sid;
+    char name[128];
+
+} student_t;
+using namespace std;
+
+int main() {
+    student_t s1;
+    const int num_student=3;
+    printf("Enter the name: ");
+    scanf("%s", &(s1.name[0]));
+
+    printf("Enter sid: ");
+    scanf("%i", &s1.sid);
+    puts("**************************\n");
+    student_t array_stu[num_student];
+
+    for (int i = 0; i < num_student; i++) {
+        printf("Enter the sid of student %i: ", (i + 1));
+        scanf("%i", &(array_stu[i].sid));
+
+        printf("Enter the name of student %i: ", (i + 1));
+        scanf("%s", &(array_stu[i].name[0]));
+
+    }
+    puts("**************************\n");
+    for (int i = 0; i < num_student; i++) {
+        printf("Sid of student %i is %i\n", (i + 1), array_stu[i].sid);
+
+        printf("Name of student %i is %s\n", (i + 1), array_stu[i].name);
+        puts("**************************\n");
+    }
+
+    return 0;
+}
