@@ -1,0 +1,67 @@
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+ *
+ * Created on January 19, 2019, 12:34 AM
+ */
+
+#include <cstdlib>
+#include<iostream>
+
+typedef struct {
+    int age;
+    int sid;
+    char name[128];
+
+} student_t;
+using namespace std;
+
+student_t get_studentinfo(int num) {
+    student_t st;
+    printf("Enter the sid of student %i: ", (num));
+    scanf("%i", &(st.sid));
+
+    printf("Enter the name of student %i: ", (num));
+    scanf("%s", &(st.name[0]));
+
+    return st;
+}
+
+void print_studentinfo(student_t *stu_ptr, int num) {
+    printf("Sid of student %i is %i\n", (num + 1), stu_ptr->sid);
+    printf("Name of student %i is %s\n", (num + 1), stu_ptr->name);
+
+}
+
+int main() {
+    student_t s1;
+    const int num_student = 3;
+    //    printf("Enter the name: ");
+    //    scanf("%s", &(s1.name[0]));
+    //
+    //    printf("Enter sid: ");
+    //    scanf("%i", &s1.sid);
+    //    puts("**************************\n");
+    student_t array_stu[num_student];
+
+    for (int i = 0; i < num_student; i++) {
+        //        printf("Enter the sid of student %i: ", (i + 1));
+        //        scanf("%i", &(array_stu[i].sid));
+        //
+        //        printf("Enter the name of student %i: ", (i + 1));
+        //        scanf("%s", &(array_stu[i].name[0]));
+
+        array_stu[i] = get_studentinfo(i + 1);
+
+    }
+    puts("************************************\n");
+    for (int i = 0; i < num_student; i++) {
+        //        printf("Sid of student %i is %i\n", (i + 1), array_stu[i].sid);
+        //
+        //        printf("Name of student %i is %s\n", (i + 1), array_stu[i].name);
+        //        puts("**************************\n");
+        print_studentinfo(&(array_stu[i]), i);
+    }
+
+    return 0;
+}
