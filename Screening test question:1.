@@ -1,0 +1,102 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+
+
+/*
+ * Complete the 'getMostVisited' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. INTEGER_ARRAY sprints
+ */
+
+int getMostVisited(int n, vector<int> sprints)
+{
+     map<int ,int > Markers;
+     int max=0;
+     int p=1;
+     for (int i=1;i<=n;i++){
+         Markers.insert(pair<int, int>(i,0));
+     }
+     
+     for(int j=1;j<=sprints.size();j++){
+        for(int k=sprints[j];k<=sprints[j+1];k++){
+            Markers.at(sprints[k])++;
+        }
+     }
+     map<int ,int > :: iterator itr;
+     for(itr=Markers.begin();itr!=Markers.end();itr++){
+         if(Markers.at(p)>max){
+            max=Markers.at(p);
+         }
+     }
+     
+    return max;
+    }
+
+
+
+
+
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    string sprints_count_temp;
+    getline(cin, sprints_count_temp);
+
+    int sprints_count = stoi(ltrim(rtrim(sprints_count_temp)));
+
+    vector<int> sprints(sprints_count);
+
+    for (int i = 0; i < sprints_count; i++) {
+        string sprints_item_temp;
+        getline(cin, sprints_item_temp);
+
+        int sprints_item = stoi(ltrim(rtrim(sprints_item_temp)));
+
+        sprints[i] = sprints_item;
+    }
+
+    int result = getMostVisited(n, sprints);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
