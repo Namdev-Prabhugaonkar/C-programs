@@ -1,0 +1,52 @@
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <set>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    return 0;
+    int queries;
+    int option;
+    int value;
+    cin>>queries;
+
+    set<int> digits;
+    set<int>::iterator itr;
+    for(int i=0;i<queries;i++){
+        cin>>option;
+        cin>>value;
+        switch(option){
+            case 1:
+            digits.insert(value);
+            break;
+
+            case 2:
+            digits.erase(value);
+            break;
+
+            case 3:
+            itr=digits.find(value);
+            if(itr==digits.end())
+            {
+                cout<<"No";
+            }
+            else
+            {
+                cout<<"Yes";
+            }
+            break;
+            
+
+        }
+    }
+
+}
+
+
+
