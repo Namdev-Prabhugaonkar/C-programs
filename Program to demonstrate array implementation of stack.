@@ -1,0 +1,83 @@
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+ *
+ * Created on February 03, 2019, 2:35 PM
+ */
+
+
+#include<stdio.h>
+#include<iostream>
+#include<string.h>
+#include<time.h>
+#include<vector>
+
+#define maxsize 100
+using namespace std;
+int top = -1;
+int arr[maxsize];
+
+void push(int x) {
+    if (top == maxsize - 1) {
+        cout << "Stack is full" << endl;
+        return;
+    }
+    top = top + 1;
+    arr[top] = x;
+}
+
+void pop() {
+
+    if (top == -1) {
+        cout << "Stack is empty, no elements to pop!!" << endl;
+        return;
+    } else {
+        top = top - 1;
+    }
+}
+
+int Top() {
+    if (top == -1) {
+        cout << "Stack is empty" << endl;
+        return 0;
+    } 
+    else {
+                return arr[top];
+    }
+}
+
+bool isEmpty() {
+    if (top == -1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+void print(){
+    cout<<"Stack:";
+    for(int i=0;i<=top;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+int main() {
+    cout<<"Initial state of ";
+    print();
+    
+    push(3); cout<<"Stack after push; " ; print();
+    push(5); cout<<"Stack after push; " ; print();
+    push(7); cout<<"Stack after push; " ; print();
+    push(8); cout<<"Stack after push; " ; print();
+    push(12); cout<<"Stack after push; "; print();
+
+    pop(); cout<<"Stack after pop; " ; print();
+
+    pop(); cout<<"Stack after pop; " ; print();
+
+    int x=Top();
+    cout<<"Top element: "<<x;
+    return 0;
+}
+
+
