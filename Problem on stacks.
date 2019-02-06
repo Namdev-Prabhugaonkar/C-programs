@@ -1,0 +1,69 @@
+
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+#define max_size 1000000
+ int top=-1;
+long int arr[max_size];
+
+void push(long int x) {
+  if (top == max_size - 1) {
+    cout << "Stack is full" << endl;
+    return;
+  }
+  top = top + 1;
+  arr[top] = x;
+}
+
+void pop() {
+
+  if (top == -1) {
+    cout << "Stack is empty, no elements to pop!!" << endl;
+    return;
+  }
+   else {
+    top = top - 1;
+ }
+}
+
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
+  long int q;
+  cin>>q;
+  long int n;
+  long int number;
+
+  for(long int i=0;i<q;i++){
+      cin>>n;
+      if(n==1){
+        cin>>number;
+        push(number);
+      }
+      else if (n==2){
+         
+          pop();
+      }
+
+      else if(n==3){
+        //   long int no=Top(q,arr);
+        //   cout<<no<<endl;
+
+        int max=0;
+        for(long int i=0;i<q;i++){
+            if(arr[i]>max){
+                max=arr[i];
+            }
+        }
+        cout<<max<<endl;
+      }
+  }
+    return 0;
+}
+
