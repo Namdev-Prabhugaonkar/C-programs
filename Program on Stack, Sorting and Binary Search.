@@ -1,0 +1,141 @@
+/* 
+ * File:   main.cpp
+ * Author: namdevprabhugaonkar
+ *
+ * Created on February 07, 2019, 9:35 PM
+ */
+
+//linear search
+//array_stacks
+//bubble sort
+//binary search
+
+
+#include<stdio.h>
+#include<iostream>
+#include<string.h>
+#include<time.h>
+#include<vector>
+
+#define maxsize 100
+using namespace std;
+int top = -1;
+int arr[maxsize];
+
+void push(int x) {
+    if (top == maxsize - 1) {
+        cout << "Stack is full" << endl;
+        return;
+    }
+    top = top + 1;
+    arr[top] = x;
+}
+
+void pop() {
+
+    if (top == -1) {
+        cout << "Stack is empty, no elements to pop!!" << endl;
+        return;
+    } else {
+        top = top - 1;
+    }
+}
+
+int Top() {
+    if (top == -1) {
+        cout << "Stack is empty" << endl;
+        return 0;
+    } 
+    else {
+                return arr[top];
+    }
+}
+
+bool isEmpty() {
+    if (top == -1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+void print(){
+    cout<<"Stack:";
+    for(int i=0;i<=top;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+
+void  Binarysearch(int arr[],int count,int num){
+    int start=0;
+    int end=count-1;
+    while (start <= end) {
+
+        int mid = (start + end) / 2;
+
+        if (arr[mid] == num) {
+            cout << "Element " << arr[mid] << " was found at index " << mid << endl;
+            break;
+        } else if (num < arr[mid]) {
+            end = mid - 1;
+        } else {
+            start = mid + 1;
+            if (num > arr[end]) {
+                cout << "Element was not found in the array!!" << endl;
+                break;
+            }
+        }
+
+
+    }
+}
+int main() {
+    int swapped,temp;
+    cout<<"Initial state of ";
+    print();
+    
+    push(3); cout<<"Stack after push; " ; print();
+    push(5); cout<<"Stack after push; " ; print();
+    push(7); cout<<"Stack after push; " ; print();
+    push(8); cout<<"Stack after push; " ; print();
+    push(12); cout<<"Stack after push; "; print();
+
+    pop(); cout<<"Stack after pop; " ; print();
+
+    pop(); cout<<"Stack after pop; " ; print();
+
+    int x=Top();
+    cout<<"Top element: "<<x<<endl;
+    
+    while(1){
+        swapped=0;
+        for(int i=0;i<4;i++){
+            if(arr[i]>arr[i+1]){
+                temp=arr[i];
+                arr[i]=arr[i+1];
+                arr[i+1]=temp;
+                swapped=1;
+            }
+        }
+        
+        if(swapped==0){
+            break;
+        }
+    }
+    
+    cout<<"array after sorting"<<endl;
+    for(int i=0;i<4;i++){
+        cout<<arr[i]<<" ";
+    }
+    
+    int num;
+    cout<<"Enter the number to be searched"<<endl;
+    cin>>num;
+    
+    int count=4;
+    Binarysearch(arr,count,num);
+    
+    
+    return 0;
+}
