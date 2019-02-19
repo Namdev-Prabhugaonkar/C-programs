@@ -1,0 +1,35 @@
+// you can use includes, for example:
+#include <algorithm>
+#include <vector>
+#include <map>
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &A) {
+    // write your code in C++14 (g++ 6.2.0)
+    
+   int size=A.size();
+   int counter=1;
+   
+   vector<int> start(size);
+   vector<int> end(size);
+   start[size-1]=end[size-1]=1;
+   map<int,int> jumps;
+   jumps[A[size-1]]=size-1;
+   for(int i=size-2;i>=0;--i)
+   {
+       auto hi=jumps.lower_bound(A[i]),lo=jumps.upper_bound(A[i]);
+       if(hi!=jumps.end()) start[i]=end[hi->second];
+       if(lo!=jumps.begin()) end[i]=start[(lo--)->second];
+       if(start[i]) {
+           counter=counter+1;
+       }
+       
+       jumps[A[i]]=i;
+   }
+    
+    return counter;
+    
+}
+
