@@ -1,0 +1,40 @@
+// you can use includes, for example:
+#include <algorithm>
+#include <stdio.h>
+#include <iostream>
+#include <vector>
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(vector<int> &S, vector<int> &E) {
+    // write your code in C++14 (g++ 6.2.0)
+    int size=S.size();
+    sort(S.begin(),S.begin()+size);
+    sort(E.begin(),E.begin()+size);
+    
+    int numberof_chairs=0, counter=1;
+    int i=1,j=0;
+    
+    while(i<size && j<size)
+    {
+        if(S[i]<=E[j])
+        {
+            numberof_chairs=numberof_chairs+1;
+            i++;
+            if(numberof_chairs>counter)
+            {
+                counter=numberof_chairs;
+            }
+        }
+            else
+            {
+                numberof_chairs=numberof_chairs-1;
+                j++;
+            }
+
+    }
+    
+    return counter;
+ 
+}
