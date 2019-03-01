@@ -7,28 +7,28 @@ vector<string> split_string(string);
 // Complete the minimumDistances function below.
 int minimumDistances(vector<int> a) {
 int count=0;
-int diff=1;
-for(int i=0;i<a.size();i++)
+int diff=a.size();
+for(int i=0;i<a.size()-1;i++)
 {
     for(int j=i+1;j<a.size();j++)
     {
         if(a[i]==a[j]){
             int temp=abs(i-j);
-            diff=temp;
-            if(temp>count&&temp<=diff)
-            {
-                count=temp;
+            
+            if(diff>temp)
+             {
+                 diff=temp;
             }
         }
     }
 }
 
-if(count>0){
-    return count;
+if(diff==a.size()){
+    return -1;
 }
 
 else {
-return -1;
+return diff;
 }
 }
 
