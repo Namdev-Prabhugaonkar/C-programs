@@ -6,26 +6,23 @@ vector<string> split_string(string);
 
 // Complete the cutTheSticks function below.
 vector<int> cutTheSticks(vector<int> arr) {
-vector<int> result;
-
-int size;
-while(!arr.empty())
-{
-  size = arr.size();
+  vector<int> result;
+  int size = arr.size();
   sort(arr.begin(), arr.end());
-  for(int i=0;i<size;i++)
-  {
-  arr[i]=arr[i]-arr[(size-(size-1))];    
-  result.push_back(1);
-
-  while (arr.back() == 0 && !arr.empty())
-    arr.pop_back();
-    cout<<size<<endl;
-
+  for (int i = 0; i < size; i++) {
+    if (arr[i]==0)
+      continue;
+    int cut = 0;
+    int val = arr[i];
+    for (int j = i; j < size; j++) {
+      if (arr[j]) {
+        arr[j] = arr[j] - val;
+        cut++;
+      }
+    }
+    result.push_back(cut);
   }
-}
-
-return result;
+  return result;
 }
 
 int main()
