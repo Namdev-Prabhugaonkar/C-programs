@@ -1,0 +1,85 @@
+#include <bits/stdc++.h>
+#include "string.h"
+
+using namespace std;
+
+// Complete the caesarCipher function below.
+string caesarCipher(string s, int k) {
+
+long int length=s.length();
+string out; 
+
+for(int i=0;i<length;i++)
+{
+    long int val=int(s[i]);
+    long int val2=val+k;
+    //cout<<val<<endl;
+    if((64<val) && (val<91))
+    {
+     if(val2>=90)
+     {
+        // val=64+(k);
+         val=val2-90;
+         char ch=char(val);
+         s[i]=ch;
+     }
+     else 
+     {  
+         val=val+k;
+         char ch=char(val);
+         s[i]=ch;
+     }
+    // s[i]='b';
+    }
+
+    else if((96<val) && (val<123))
+    {
+        if(val2>=122)
+        {
+         //val=96+(k);
+         val=96+(val2-122);
+         char ch=char(val);
+         s[i]=ch;
+        }
+        else
+        {
+         val=val+k;
+         char ch=char(val);
+         s[i]=ch;
+        }
+         //s[i]='c';
+    }
+
+    else
+   {
+       s[i];
+   }
+}
+
+
+return s;
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    int n;
+    cin >> n;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    string s;
+    getline(cin, s);
+
+    int k;
+    cin >> k;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    string result = caesarCipher(s, k);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
