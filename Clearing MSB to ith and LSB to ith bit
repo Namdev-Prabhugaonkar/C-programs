@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() {
+    int x=253;
+    int mask=0;
+    mask=1<<3;
+    printf("%i\n",mask);
+    mask=mask-1;
+    printf("%i\n",mask);
+    mask=~mask;
+    printf("%i\n",mask);
+    x=x&mask;
+    printf("%i\n",x);
+    
+    
+    int mask2=0;
+    int a=255;
+    mask2=1<<5;
+    mask2=mask2-1;
+    printf("%i\n",mask2);
+    a=a&mask2;
+    printf("%i\n",a);
+	return 0;
+}
