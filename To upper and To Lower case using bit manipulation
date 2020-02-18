@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+    char a='A';
+    char b='b';
+    
+    char mask=' ';
+    char mask2='_';    
+    printf("character=%c\n",a);
+    printf("character=%c\n",mask);
+    a=a|mask;
+    printf("character=%c\n",a);
+    
+    printf("character=%c\n",b);
+    printf("character=%c\n",mask2);
+    b=b&mask2;
+    printf("character=%c\n",b);
+}
+
+//1000001 A
+//0100000 
+//1100001 a
+
+//1100001 a
+//1011111 _
+//1000001 A
