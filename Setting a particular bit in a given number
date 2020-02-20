@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int set_bit(int &num,int pos)
+{   int k;
+    num|=(1<<pos);
+    return num;
+    
+}
+
+int main() {
+    int x=0;
+    x|=1<<4;
+    printf("%i\n",x);
+    int shifted_number=set_bit(x,5);
+    printf("%i\n",x);
+	return 0;
+}
