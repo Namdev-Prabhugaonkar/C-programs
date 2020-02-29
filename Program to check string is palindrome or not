@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int isPalindrome(string str)
+{
+    int i=0;
+    int lenght=str.length()-1;
+    while(i<lenght)
+    {
+        if(!(str[i]==str[lenght]))
+        {
+            return 0;
+        }
+        else{
+            return 1;
+        }
+    }
+}
+
+
+int main() {
+    string str="ABBA";
+   printf("%i",isPalindrome(str));
+	return 0;
+}
