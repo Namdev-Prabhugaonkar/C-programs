@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+    int arr[]={0,1,0,1};
+    int sum=0;
+    int product=0;
+    int counter=0;
+    for(int i=3;i>=0;i--){
+        if (arr[i]==1)
+        {        
+            product=pow(2,counter);
+            sum+=product;          
+            counter+=1;
+            continue;
+        }
+        counter+=1;
+    }
+    printf("sum=%i",sum);
+    return 0;
+}
