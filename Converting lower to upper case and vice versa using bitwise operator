@@ -1,0 +1,7 @@
+for (char ch = 'a'; ch <= 'z'; ch++)
+	cout << char(ch ^ ' '); // prints ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+// Convert uppercase alphabet to lowercase
+for (char ch = 'A'; ch <= 'Z'; ch++)
+	cout << char(ch ^ ' '); // prints abcdefghijklmnopqrstuvwxyz
+	
