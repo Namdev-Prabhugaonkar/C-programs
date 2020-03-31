@@ -1,0 +1,56 @@
+#include <istream>
+#include <cstdint>
+#include <stdlib.h>
+#include <std::vector<char> 
+
+
+// input =
+// [
+//   ['C','E','A','B'],
+//   ['S','F','D','S'],
+//   ['A','D','B','E']
+// ]
+
+ 
+
+// Given word = "ABECCD", return true.
+// Given word = "SDD", return true.
+// Given word = "ABCB", return false.
+
+int main(){
+   std::vector<std::vector<char>> input_array={{'C','E','A','B''},{'S','F','D','S'},{'S','F','D','S'},{'A','D','B','E'}};
+   
+   unordered_map<char,int> temp;
+   for(auto :i input_array)
+   temp[i]++;
+ 
+   
+   	for(int b=0;b<word.length();b++){
+   		for(int a=0;a<input_array.size();a++){
+   			if(word[b]==a.first){
+   				if(a.second>0) {
+   					a.second-=1;
+   				}
+   			else{
+   				return false;
+   			}
+   	}
+   } 
+
+	return true;
+}
+
+
+
+map:
+a       a.second
+A 		2 = (2-1) = 1 
+B 		2			1
+C       1  			0
+D 		3
+E       2			1
+F       2
+S       2
+ 
+
+ word= ABECCD
