@@ -1,0 +1,71 @@
+#include <iostream>
+
+using namespace std;
+#define max 1000
+
+class stack
+{
+	int top;
+public:
+	int a[max];
+	stack(){top=-1;}
+	bool push(int x);
+	int pop();
+	int peek();
+	bool isEmpty();
+	
+};
+
+bool stack::push(int x){
+	if(top >= max-1){
+		cout<<"Stack is full"<<endl;
+		return 0;
+	}
+	else{
+		a[++top]=x;
+		cout<<x<<" is pushed onto stack"<<endl;
+		return 1;
+	}
+}
+
+int stack::pop(){
+	if(top<0){
+		cout<<"Stack is empty"<<endl;
+		return 0;
+	}
+	else{
+		int x=a[top--];
+		return x;
+	}
+}
+
+int stack::peek(){
+	if(top<0){
+		cout<<"stack is empty"<<endl;
+		return 0;
+	}
+	else{
+		int x=a[top];
+		return x;
+	}
+}
+
+bool stack::isEmpty(){
+	return (top<0);
+}
+
+int main(){
+	class stack s;
+	cout<<s.isEmpty()<<endl;
+	cout<<s.push(0)<<endl;
+	 s.push(1);
+	cout<<s.isEmpty()<<endl;
+	cout<<"top element= "<<s.peek()<<endl;
+	cout<<"Popped element= "<<s.pop()<<endl;
+	cout<<"top element= "<<s.peek()<<endl;
+	return 0;
+}
+
+
+
+
