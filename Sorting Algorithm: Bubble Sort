@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+void swap(int *a,int *b){
+	int temp = *a;
+	*a= *b;
+	*b= temp;
+}
+
+void printArray(int arr[],int size){
+	for(int i=0;i<size;i++){
+		cout<<arr[i]<<" ";
+	}
+}
+
+
+void bubbleSort(int arr[],int size){
+	for(int i=0;i<size-1;i++){
+		for(int j=0;j<size-i-1;j++){
+			if (arr[j] > arr[j+1]){
+			  swap(&arr[j], &arr[j+1]);
+			}
+		}
+	}
+}
+
+int main(){
+	int arr[]={2,5,2,7,10,1,12};
+	int size=sizeof(arr)/sizeof(arr[0]);
+	cout<<"Array before sorting: ";
+	printArray(&arr[0],size); cout<<endl;
+	bubbleSort(&arr[0],size);
+	cout<<"Array after sorting: ";
+	printArray(&arr[0],size); cout<<endl;
+    
+	return 0;
+}
