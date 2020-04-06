@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+int binary_search(int arr[], int start, int end, int element_to_search){
+	if(end>=start){
+		int mid = start+(end-start)/2;
+		if(arr[mid]==element_to_search){
+			return mid;
+		}
+		if(arr[mid]>element_to_search){
+			return binary_search(arr,start,mid-1,element_to_search);
+		}
+		else{
+			return binary_search(arr,mid+1,end,element_to_search);
+		}
+	}
+	return -1;
+}
+
+
+int main(){
+	int arr[]={12,34,56,67,78,89};
+	int  x=78;
+	int size= sizeof(arr)/sizeof(arr[0]);
+	int result= binary_search(arr, 0, size-1, x);
+	(result==-1)? cout<< "Element is not present in the array."<<endl : cout<<"Element "<<x<<" was found at index: "<<result<<endl;
+
+	return 0;
+}
