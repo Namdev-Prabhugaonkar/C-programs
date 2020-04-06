@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int linear_search(int arr[], int size, int item_to_search){
+
+	for(int i=0;i<size;i++){
+		if(arr[i]==item_to_search){
+			return i;
+		}
+	}
+
+	return -1;
+}
+int main(){
+	int arr[]={4,3,6,1,8,12,54,12,34,54};
+	int  x=12;
+	int size= sizeof(arr)/sizeof(arr[0]);
+	int result= linear_search(arr,size,x);
+	(result==-1)? cout<<"Element is not present in given array."<<endl : cout<<"Element "<<x<<" was found at index "<<result<<endl;
+	return 0;
+}
