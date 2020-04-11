@@ -1,0 +1,32 @@
+#include <istream>
+using namespace std;
+
+void parse_parm(char const *arguments, int argument_number, char *output){
+	string arr[]={};	//array to store the individual strings
+	int count=0;    //count for array index
+	string str;     //string to store arguement
+	str=*arguments;
+	string temp;
+
+	for(int i=0;i<str.length();i++){
+		if(str[i]!=','){
+			char a=str[i];
+		    temp+=a;
+		} 
+		else{
+			arr[count]=temp;
+			temp="0";
+			count++;
+		}
+	}
+
+	*output=arr[argument_number];
+}
+
+int main(){
+	char * s=“one,two,three”;
+	int arg=1;
+	char *output;
+	parse_parm(s,arg,output);
+	return 0;
+}
