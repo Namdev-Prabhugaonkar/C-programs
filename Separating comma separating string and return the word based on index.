@@ -1,32 +1,65 @@
-#include <istream>
+// 6.	Write a function in any language (C/C++, Python, etc) that takes a comma separated list in a string and returns a requested Nth item in that list. For example the function signature in C would be as follows:
+// void parse_parm(char const *arguments, int argument_number, char *output);
+
+// Where if I call it as follows then the “output” variable will contain the string “two”.:
+// parse_parm(“one,two,three”, output, 1);
+
+// Write comments documenting all assumptions you make in your code
+
+//code
+
+#include <iostream>
+#include <cstdlib>
 using namespace std;
 
 void parse_parm(char const *arguments, int argument_number, char *output){
-	string arr[]={};	//array to store the individual strings
-	int count=0;    //count for array index
-	string str;     //string to store arguement
-	str=*arguments;
-	string temp;
+    string str;
+    str=arguments;
 
-	for(int i=0;i<str.length();i++){
-		if(str[i]!=','){
+    string temp;
+    string arr[]={};
+    int count=0;  
+
+	for(int i=0;i<str.length();i++)
+	{
+		if(str[i]!=',' && str[i+1]!='\0'){
 			char a=str[i];
 		    temp+=a;
-		} 
-		else{
-			arr[count]=temp;
-			temp="0";
+		}
+		
+
+		else if(i==str.length()-1){
+			char a=str[i];
+		    temp+=a;
+		    arr[count]=temp;
+		 	temp='\0';
 			count++;
 		}
+
+		else{
+			arr[count]=temp;
+			temp='\0';
+			count++;
+		}
+
 	}
 
-	*output=arr[argument_number];
+ 	output = (char *)malloc(sizeof(char)*arr[argument_number].length()); 
+
+	for(int i=0;i<arr[argument_number].length();i++){
+		*(output+i)=arr[argument_number][i];
+	}
+
+ 	for(int i=0;i<arr[argument_number].length();i++){
+		cout<<*(output+i);
+	}
+	cout<<endl;
 }
 
 int main(){
-	char * s=“one,two,three”;
-	int arg=1;
-	char *output;
+	const char*  s="one,two,three";
+	int arg=2;
+    char * output;
 	parse_parm(s,arg,output);
 	return 0;
 }
