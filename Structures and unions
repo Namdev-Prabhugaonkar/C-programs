@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct
+{
+	float x;
+	float y;
+}float_numbers;
+
+typedef union {
+	int total_students;
+	char teacher_name[15];
+	float std;
+
+}class_room;
+
+float_numbers foo(float x, float y){
+	float_numbers p;
+	p.x=x;
+	p.y=y;
+
+	return p;
+}
+
+float sum_using_struct_pointer(float_numbers * float_ptr){
+	float sum = float_ptr->x + float_ptr->y;
+	return sum;
+}
+
+void swapping_value_of_struct_using_pointer(float_numbers * float_ptr){
+	float temp=float_ptr->x;
+	float_ptr->x=float_ptr->y;
+	float_ptr->y=temp;
+}
+
+int main(){
+    float_numbers float1;
+	float1.x=1;
+	float1.y=3;
+	float_numbers float2={4,6};
+	printf("%f %f %f %f\n",float1.x,float1.y,float2.x,float2.y);
+
+	//array of structures
+	float_numbers float_array[10];
+	for(int i=0;i<10;i++){
+		float_array[i].x=i;
+		float_array[i].y=i+1;
+	}
+
+	for(int i=0;i<10;i++){
+		printf("%f %f\n", float_array[i].x,float_array[i].y);
+	}
+
+	//returning struct from fucntion
+	float_numbers float3;
+	float3=foo(9,8);
+	printf("%f %f \n",float3.x,float3.y);
+
+	//pointer to structure
+	float_numbers float4={14,16};
+	float_numbers * float_ptr= &float4;
+	float sum=sum_using_struct_pointer(float_ptr);
+	printf("Sum=%f\n", sum);
+	
+	//swapping value
+	printf("Valeus before swapping: x=%f y=%f\n", float4.x,float4.y);
+	swapping_value_of_struct_using_pointer(float_ptr);
+	printf("Values after swapping: x=%f y=%f\n", float4.x,float4.y);
+
+	//union
+    class_room class1;
+	class1.total_students=50;
+	printf("%i\n",class1.total_students);
+	strcpy(class1.teacher_name,"Deepa");
+	printf("%s\n",class1.teacher_name);
+	class1.std=8.0;
+	printf("%f\n",class1.std);
+
+	printf("Courrupted values for total_students and teacher_name\n");
+	printf("%i\n",class1.total_students);
+	printf("%s\n",class1.teacher_name);
+	printf("%f\n",class1.std);
+
+	return 0;
+}
+
