@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+
+void foo(int a){
+	printf("Value of a is: %i\n",a);
+}
+
+void add(int a,int b){
+	int sum=a+b;
+	printf("Sum= %i\n",sum);
+}
+
+void subtract(int a,int b){
+	int diff=a-b;
+	printf("Difference= %i\n",diff);
+}
+
+void multiply(int a, int b){
+	int mul=a*b;
+	printf("Product= %i\n",mul);
+}
+
+void function1(){
+	printf("From Function 1.\n");
+}
+
+void function2(){
+	printf("From Function 2.\n");
+}
+
+void wrapper(void (*function)()){
+	function();
+}
+
+int main(){
+	void (*foo_ptr)(int);
+	foo_ptr=&foo;
+
+	(*foo_ptr)(10);
+
+	//array of function pointer
+	void(*function_pointer_arr[])(int,int)={add, subtract, multiply};
+	uint32_t ch, a=15, b=10;
+	printf("Enter Choice: 0 for add, 1 for subtract and 2 for multiply\n"); 
+	scanf("%d", &ch);
+
+	if(ch>2){
+		printf("Invalid option.\n");
+	}
+	else{
+		(*function_pointer_arr[ch])(a,b);
+	}
+
+	//passing function pointer as an argument
+
+	wrapper(&function1);
+	wrapper(&function2);
+
+	return 0;
+}
