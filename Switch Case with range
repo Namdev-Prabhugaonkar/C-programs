@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+	int choice=0;
+	printf("Enter the choice:");
+	scanf("%i",&choice);
+
+	switch(choice){
+		case 0: choice=choice+1;
+				printf("Choice is 0, and result=%i\n",choice);
+				break;
+
+		case 1 ... 6: 
+				choice = choice *choice;
+				printf("Choice between 1 and 5, and result=%i\n",choice);
+				break;
+
+		case 7 ... 9: 
+				choice=choice-12;
+				printf("Choice is between 6 and 9, and result=%i\n",choice);
+				break;
+
+		default: 
+		printf("Choice is above 9\n");
+		break;
+	}
+
+	return 0;
+}
