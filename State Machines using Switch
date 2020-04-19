@@ -1,0 +1,78 @@
+#include <iostream>
+#include <stdio.h>
+
+//https://aticleworld.com/state-machine-using-c/
+
+
+typedef enum
+{
+    Idle_State,
+    Card_Inserted_State,
+    Pin_Eentered_State,
+    Option_Selected_State,
+    Amount_Entered_State,
+    last_State
+} eSystemState;
+
+typedef enum
+{
+    Card_Insert_Event,
+    Pin_Enter_Event,
+    Option_Selection_Event,
+    Amount_Enter_Event,
+    Amount_Dispatch_Event,
+    last_Event
+} eSystemEvent;
+
+int main(){
+	eSystemState next_state=Idle_State;
+	eSystemEvent event;
+
+	while(1){
+		event=readEvent();
+		switch(next_state){
+			case Idle_State:
+				  if(event==Card_Insert_Event){
+				  	next_state=Card_Inserted_State;
+				  }
+				  break;
+
+			case Card_Inserted_State:
+				 if(event==Pin_Enter_Event){
+				 	next_state=Pin_Eentered_State;
+				 }
+				 break;
+
+			case Pin_Eentered_State:
+				 if(event==Pin_Enter_Event){
+				 	next_state=Option_Selected_State;
+				 }
+				 break;
+
+			case Option_Selected_State:
+				 if(event==Amount_Enter_Event){
+				 	next_state=Amount_Entered_State;
+				 }
+				 break;
+
+			case Amount_Entered_State:
+			 	 if(event==Amount_Dispatch_Event){
+			 	 	next_state=last_State;
+			 	 }
+			 	 break;
+
+			case last_State:
+				 if(event==last_Event){
+				 	next_state=Idle_State;
+				 }	
+				 break;
+
+			default:
+				break;
+
+		}
+
+	}
+
+	return 0;
+}
