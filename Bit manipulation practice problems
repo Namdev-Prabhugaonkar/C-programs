@@ -1,0 +1,139 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+
+#if 1
+uint32_t highestBitset(uint32_t number){
+
+	// for(int i=31;i>=0;i--){
+	// 	if(number & (1<<i)){
+	// 		return i;
+	// 	}
+	// }
+
+	//fatser method
+	uint16_t high = number>>16;
+	uint16_t low = number;
+	if(high){
+		for(int i=16;i>=0;i--)
+		{
+		if(high & (1<<i))
+		{
+			return i+16;
+		}
+		}
+
+	}
+	else{;
+		for(int i=16;i>=0;i--){
+		if(low & (1<<i)){
+			return i;
+		}
+	}
+}
+
+	return 0;
+}
+
+int lookuptableFor8bit(uint8_t num){
+	int8_t lookUptable[256] = {-1,
+								0,
+								1,
+								1,
+								2};
+	return lookUptable[num];							
+}
+
+
+
+uint32_t invert_bit(uint32_t num, uint32_t bit_pos){
+	uint32_t mask = (1<<bit_pos);
+	num ^= mask;
+	return num;
+}
+
+uint8_t swap_nibble(uint8_t num){
+	uint8_t ans;
+	uint8_t high_nibble = num>>4;
+	uint8_t low_nibble = num<<4;
+	ans = low_nibble | high_nibble ; 
+	return ans;
+}
+
+unsigned int Bits_swap(unsigned int z){
+	 uint32_t even = z & (0xAAAAAAAA);
+	 uint32_t odd = z & (0x55555555);
+	 even  = even >>1;
+	 odd = odd<<1;
+     z = even | odd ; 
+     return z;
+
+}
+
+
+int bitSwapConversion (int x, int y){
+ 	int count = 0;
+	for(int z = x^y; z != 0; z = z >> 1)
+	{
+		count += z & 1;
+	}
+	return count;
+}
+
+
+
+int bitsInsert(int x, int y, int a, int b){
+int allones = ~0; 
+int left = allones << (b+1);
+int right = (1 <<a) - 1;
+int mask = left | right;
+mask = mask | (y<<a);
+int clear_X = x & mask; // clear bits a through b
+int shift_Y = y << a; // Move Y into correct position
+return clear_X | shift_Y;
+
+}
+
+#endif
+
+int main(){
+
+//highest bit set
+	// uint32_t num= 0X3;
+	// uint32_t ans = highestBitset(num);
+	// printf("%d\n", ans);
+
+//highest bit set using lookup table
+ //    uint8_t no = 0x3;
+ //    uint8_t ans1 = lookuptableFor8bit(no);
+ //    printf("%d\n", ans1);
+ 
+//inverting a bit at a position
+ 	// uint32_t num = 0x00800000;
+ 	// uint32_t ans = invert_bit(num,16);
+ 	// printf("%x\n",ans);
+
+
+//Swap nibbles
+	// uint8_t num = 0xCA;
+	// uint8_t ans = swap_nibble(num);
+	// printf("%X\n",ans);
+
+//Swap odd and even bits
+    // unsigned int x = 42; // 00111000
+    // printf("%u ", Bits_swap(x));
+
+//Bit Flip to convert from integer A to B
+	// int a = 8 , b =7;  //1001 0111
+	// int ans = bitSwapConversion(a,b);
+	// printf("%i\n",ans);
+
+//bitsInsert between specific position
+	//X = 00100000 (32), Y = 1100 (12), a = 0, b = 4
+	uint32_t x = 0x00100000 ;
+	uint32_t y = 0x1100 ; 
+    int ans = bitsInsert(x,y,0,4);
+    printf("%x\n",ans);
+
+	return 0;
+}
