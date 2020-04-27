@@ -1,0 +1,149 @@
+#include<stdio.h> 
+#include<string.h>
+
+#if 1
+void reverse(char *str, int length){
+	printf("%s\n",(str));
+	int len = length-1;
+	int mid = len/2;
+	int start=0;
+	while(start<=mid){
+		char temp = str[start];
+		str[start] = str[len];
+		str[len] = temp;
+		len-=1;
+		start+=1;
+	}
+	printf("%s\n",(str));
+}
+   
+void reverse_words_in_string(char *s)
+{	
+	int i=0;
+	unsigned int j=0;
+
+	while(j <= strlen(s))
+	{
+		if( s[j] == ' ' || s[j] == '\0')
+		{
+			reverse( s+i, j-i );
+			i = j+1;
+		}
+		j++;
+	}
+	reverse(s,strlen(s));
+}
+
+
+void last_word_in_string(char *s)
+{   
+	char temp[strlen(s)];
+	int i=0;
+	int length= strlen(s)-1;
+	while(*(s+length)!=' '){
+		 temp[i] = *(s+length);
+		 length-=1;
+		 i+=1;
+		
+	}
+	printf("%s\n",temp);
+	reverse(temp, i);
+}
+
+int stringTOinteger(char *str){
+	int number=0;
+	int i=0;
+	while(str[i]!='\0'){
+		if(str[i]>='0' && str[i]<='9'){
+			number=number*10 + str[i] - '0';
+		}
+		i++;
+	}
+	return number;
+}
+
+int isAnagram(char str1[], char str2[]){
+	int count1[100]={0};
+	int count2[100]={0};
+    if(strlen(str1)!=strlen(str2)){
+		return 0;
+	}
+	for(int i=0;i<strlen(str1);i++){
+		int temp = str1[i]-'0';
+		count1[temp]++;
+
+		int temp2 = str2[i]-'0';
+		count2[temp2]++;
+	}
+
+	for(int i=0;i<100;i++){
+		if(count1[i]!=count2[i]){
+			return 0;
+		}
+	}
+	return 1;
+
+}
+
+int Uniquecharacters(char * str){
+	int size= strlen(str);
+	int arr[255] = {0};
+	for(int i=0;i<size;i++){
+		int temp=str[i]-'0';
+		arr[temp]++;
+	}
+	for(int i=0;i<255;i++){
+		if(arr[i]>1){
+			return 0;
+		}
+	}
+	return 1;
+}
+
+#endif
+
+// char * print(){
+// 	char * ptr;
+// 	for(int i=0;i<5;i++){
+// 		*(ptr+i)='a';
+// 	}
+
+// 	for(int i=0;i<5;i++){
+// 		 printf("%c\n",*ptr);
+// 	}
+// 	return (void *)ptr;
+// }
+
+
+int main() 
+{ 
+  char srt[] = "where there is a will there is a way";
+  //reversing string and words in a string
+  //char str[] = "abcdefg";
+  //reverse(srt,strlen(srt));
+  //reverse_words_in_string(srt);
+  //printf("%s\n",(srt));
+
+  //finding last word in a string
+  // last_word_in_string(srt);
+  //printf("%s\n",last_word_in_string(srt));
+
+  //string to integer
+  // char str[]="122";
+  // int i=stringTOinteger(str);
+  // printf("%i\n",i);
+
+  //to check if anagram
+  // char str1[]="Mango";
+  // char str2[]="ognaM";
+  // int i = isAnagram(str1,str2);
+  // printf("%d\n",i);
+
+  //to check unique characters;
+  // char str[]="mango";
+  // int i = Uniquecharacters(str);
+  // printf("%d\n",i);
+
+  
+  return 0; 
+}
