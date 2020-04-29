@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void toCamelCase(char * input)
+{
+  char * ptr = (char *) malloc (strlen(input) * sizeof(char));
+  if(ptr==NULL){
+    return;   //memory allocated failed;
+  }
+  
+  int count=0;
+  
+  for(int i=0;i <=strlen(input) ;i++){
+    char temp;
+    if(*(input+i)==' '){
+      temp= *(input+i+1)-' ' ; 
+      ptr[count] = temp;
+      count+=1;
+      i=i+1;
+    }
+    else{
+      char temp2= *(input+i);
+      ptr[count]= temp2;
+      count+=1;
+    }
+  }
+  
+  for(int i=0;i < count-1 ;i ++){
+    printf("%c",ptr[i]);  
+  }
+  free(ptr);
+}
+
+//char s[] = "the man went to market to get some vegetables";
+// Result of calling toCamelCase(s) should be : "theManWentToMarketToGetSomeVegetables"
+
+int main() {
+ char * s = "the man went to market to get some vegetables";
+  toCamelCase(s);
+  return 0;
+}
+
