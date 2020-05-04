@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str[]= "Who,let,the,dogs,out";
+    char * ptr = strtok(str,",");
+    while(ptr!=0){
+        printf("%s\n",ptr);
+        ptr=strtok(0,",");
+    }
+    
+
+    return 0;
+}
