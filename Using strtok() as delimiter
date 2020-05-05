@@ -1,0 +1,28 @@
+#include<string.h>
+#include<stdio.h>
+#include<stdlib.h>
+ 
+void parse(char *str,int index, char * output){
+    char *a[5];
+    int n=0;
+ 
+	a[n]=strtok(str, ",");
+	while(a[n]){
+	    a[++n]=strtok(NULL, ",");
+	} 
+ 
+	printf("%s\n", a[index]);
+	putchar('\n');
+
+}
+
+int main(void)
+{
+	
+	char output[]=" ";
+	char s[]="One,Two,Three";
+    parse(s,1,output);
+	
+ 
+	return 0;
+}
