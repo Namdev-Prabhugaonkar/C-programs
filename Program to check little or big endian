@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <stdint.h>
+    
+
+int main()
+{
+    unsigned int a = 1;
+    char * c = (char *) &a;
+    if(*c){
+        printf("little endian: %X\n",*c);
+    }
+    else{
+        printf("big endian\n");
+    }
+    return 0;
+}
