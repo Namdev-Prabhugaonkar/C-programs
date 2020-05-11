@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdint.h>
+    
+uint32_t reverseBits(uint32_t num){
+    uint32_t numofbits = sizeof(num) * 8;
+    uint32_t reverseNum=0;
+    for(int i=0;i<numofbits;i++){
+        if(num & (1<<i)){
+            reverseNum |= 1<< ((numofbits-1)-i);
+        }
+    }
+    return reverseNum;
+}
+    
+int main()
+{
+    uint32_t num=0X5A431BCD;
+    uint32_t temp=num;
+    printf("%X\n",num);
+ 
+    temp&=0xFFFF0000;
+    temp = reverseBits(temp);
+    temp<<=16;
+    num&=0x0000FFFF;
+    num|=temp;
+    printf("%X\n",num);
+    return 0;
+}
