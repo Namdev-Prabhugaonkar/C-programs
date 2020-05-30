@@ -1,0 +1,31 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+
+char * numbertochar(int *arr, int size){
+    char * alpha = (char *) malloc (sizeof(char) * size);
+    for(int i=0;i<26;i++){
+        *(alpha + i) = 97 + arr[i];
+    }
+    return alpha;
+}
+
+int main()
+{
+    int arr[26]={0};
+    
+    for(int i=0;i<26;i++){
+        arr[i]=i;
+    }
+    
+    char * ans = numbertochar(arr, 26);
+    printf("%s",ans);
+    return 0;
+}
