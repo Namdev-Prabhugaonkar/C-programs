@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdint.h>
+
+typedef union{
+    uint8_t reg;
+    struct{
+        uint8_t bit0:1;
+        uint8_t bit1:1;
+        uint8_t bit2:1;
+        uint8_t bit3:1;
+        uint8_t bit4:1;
+        uint8_t bit5:1;
+        uint8_t bit6:1;
+        uint8_t bit7:1;
+    }__attribute__((packed));
+}REG;
+
+int main()
+{
+    uint8_t LPCGPIOPIN =10;
+    REG temp;
+    temp.bit0=1;
+    temp.bit7=1;
+    printf("%d %d %d %d %d %d %d %d\n",temp.bit0,temp.bit1,temp.bit2,temp.bit3,temp.bit4,temp.bit5,temp.bit6,temp.bit7);
+    
+    //mapping uint8_t lpc register to bit structure
+    //REG * fiopin = &(LPCGPIOPIN->PIN1);
+    REG * fiopin = &LPCGPIOPIN;
+    fiopin->bit1 = 1;
+    fiopin->bit3 = fiopin->bit1;
+    printf("%d %d %d %d %d %d %d %d\n",fiopin->bit0,fiopin->bit1,fiopin->bit2,fiopin->bit3,fiopin->bit4,fiopin->bit5,fiopin->bit6,fiopin->bit7);
+
+    
+    return 0;
+}
