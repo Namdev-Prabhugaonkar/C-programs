@@ -1,0 +1,71 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+typedef struct{
+    int top;
+    unsigned size;
+    int * array;
+}Stack;
+
+Stack * createStack(unsigned size){
+    Stack * stack = (Stack *) malloc(sizeof(Stack)*size);
+    stack->size = size;
+    stack->top = -1;
+    stack->array = (int *) malloc(sizeof(int)*stack->size);
+    return stack;
+}
+
+int isStackfull(Stack *stack){
+    return (stack->top == stack->size-1);
+}
+
+int isStackempty(Stack *stack){
+    return stack->top==-1;
+}
+
+int pop(Stack *stack){
+    if(isStackempty(stack)){
+        return INT_MIN;
+    }
+        return stack->array[stack->top--];
+}
+
+void push(Stack *stack, int item){
+    if(isStackfull(stack)){
+        printf("Stack is full\n");
+        return;
+    }
+    stack->array[++stack->top] = item;
+    printf("%d pushed to stack\n",item);
+}
+
+int peek(Stack* stack) 
+{ 
+    if (isStackempty(stack)) 
+        return INT_MIN; 
+    return stack->array[stack->top]; 
+} 
+int main()
+{
+    Stack * stack = createStack(10);
+    push(stack,1);
+    printf("Top element:%d\n",peek(stack));
+    push(stack,2);
+    printf("Top element:%d\n",peek(stack));
+    push(stack,3);
+    printf("Top element:%d\n",peek(stack));
+    
+    pop(stack);
+    printf("Top element:%d\n",peek(stack));
+    
+    return 0;
+}
