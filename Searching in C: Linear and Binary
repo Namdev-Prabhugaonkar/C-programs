@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+int search(int arr[],int size, int element){
+    for(int i=0;i<size;i++){
+        if(arr[i]==element){
+            return i;
+        }
+    }
+    return -1;
+}
+
+int main()
+{
+    int arr[] = { 2, 3, 4, 10, 40 }; 
+    int x = 12; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
+    int result = search(arr, n, x); 
+    (result == -1) ? printf("Element is not present in array") 
+                   : printf("Element is present at index %d", 
+                            result); 
+
+    return 0;
+}
+
+
+//====================== Binary search
+#include <stdio.h>
+
+int binarySearch(int arr[],int low, int high, int element){
+     if(high>=1){
+        int mid = low + (high-low)/2;
+         if(arr[mid]==element){
+             return mid;
+          }
+        if(element>arr[mid]){
+            return binarySearch(arr,mid+1,high,element);
+        }
+        
+        return binarySearch(arr,1,mid-1,element);
+    }
+    return -1;
+}
+
+int main()
+{
+    int arr[] = { 2, 3, 4, 10, 40 , 42 ,52,66, 71,86,92}; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
+    int x = 1; 
+    int result = binarySearch(arr, 0, n - 1, x); 
+    (result == -1) ? printf("Element is not present in array!\n") 
+                   : printf("Element is present at index %d\n", 
+                            result); 
+    return 0;
+}
+
+
