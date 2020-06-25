@@ -1,0 +1,204 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct linkedList{
+    int data;
+    struct linkedList * next;
+}linkedList;
+
+void printList(linkedList* n) 
+{ 
+    if(n==NULL){
+        printf("linkedList is empty.\n");
+    }
+    while (n != NULL) { 
+        printf("%d ", n->data); 
+        n = n->next; 
+    } 
+    printf("\n"); 
+} 
+
+void Addbeginning(int val, linkedList ** head){
+    linkedList * temp = (linkedList *) malloc(sizeof(linkedList));
+    temp->next=(*head);
+    temp->data=12;
+    (*head)=temp;
+    //printf("%d\n",head->data);
+}
+
+void Addending(int val, linkedList * head){
+    linkedList * curr = head;
+    linkedList * temp = (linkedList *) malloc(sizeof(linkedList));
+    while(curr->next!=NULL){
+        curr= curr->next;
+    }
+    temp->next = NULL;
+    temp->data = val;
+    curr->next = temp;
+}
+
+void deleteBehind(linkedList * head){
+    linkedList * curr = head;
+    while(curr->next->next!=NULL){
+        curr = curr->next;
+    }
+    curr->next = NULL;
+}
+
+void deleteFront(linkedList *head){
+    linkedList * temp;
+    temp = head;
+    head = head->next;
+    printf("\nData deleted = %d\n", temp->data);
+    free(temp);
+}
+
+void printMiddle(linkedList * head){
+    linkedList * slowptr = head;
+    linkedList * fastptr = head;
+    if(head!=NULL){
+        while(fastptr!=NULL && fastptr->next!=NULL){
+            fastptr = fastptr->next->next;
+            slowptr = slowptr->next;
+        }
+        printf("Middle element: %d\n",slowptr->data);
+    }
+}
+
+void countFrequency(linkedList * head, int val){
+    linkedList * curr = head;
+    int count=0;
+    while(curr->next!=0){
+        if(curr->data==val){
+            count+=1;
+        }
+        curr= curr->next;
+    }
+    printf("%d occured %d times.\n",val,count);
+}
+
+void printNthELementfromend(linkedList * head, int n){
+    linkedList * slowptr = head;
+    linkedList * fastptr = head;
+    int count=0;
+    if(head!=NULL){
+    while(count!=n-1){
+        if(fastptr == NULL) 
+        { 
+           printf("%d is greater than the no. of nodes in list.\n", n); 
+           return; 
+        } 
+        fastptr = fastptr->next;
+        count++;
+    }
+    
+    while(fastptr->next!=NULL){
+        slowptr =slowptr->next;
+        fastptr =fastptr->next;
+    }
+    printf("%dth element from last is %d\n",n,slowptr->data);
+    }   
+}
+
+void deleteNthelement(linkedList * head, int n){
+    int temp=0;
+    linkedList * curr = head;
+    if(n==0){
+        curr = head;
+        head = curr->next;   
+        return; 
+        // linkedList * temp;
+        // temp = head;
+        // head = head->next;
+    }
+    if(head!=NULL){
+        while(temp!=n-1 && curr->next!=NULL){
+            curr = curr->next;
+            temp++;
+        }
+        if(curr->next==NULL){
+            printf("%d is beyond the length of linked list.\n",n);
+            return;
+        }
+        curr->next = curr->next->next;
+    }
+}
+
+
+void reverseLinkedlist(linkedList ** head){
+    linkedList * prev = NULL;
+    linkedList * curr = *head;
+    linkedList * next = NULL;
+    
+    while (curr != NULL) { 
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    } 
+    *head = prev; 
+}
+
+void deleteEntirelist(linkedList ** head){
+    linkedList * curr = *head;
+    linkedList * next = NULL;
+    
+    while(curr!=NULL){
+        next = curr->next;
+        free(curr);
+        curr = next;
+    }
+    *head = NULL;
+    printf("linkedList is deleted.\n");
+}
+
+void deletingNodewithoutHead(linkedList * n){
+    linkedList * temp = n->next;
+    n->data = temp->data;
+    n->next = temp->next;
+    free(temp);
+}
+
+int main()
+{
+    linkedList * head = NULL;
+    head = (linkedList*)malloc(sizeof(linkedList)); 
+    head->data = 0;
+    head->next = NULL;
+    
+    linkedList * curr;
+    curr = head;
+    
+    for(int i=1;i<10;i++){
+        linkedList * temp = (linkedList *) malloc(sizeof(linkedList));
+        temp->next = NULL;
+        temp->data = i;
+        curr->next = temp;
+        curr = temp;
+    }
+    
+    printList(head);
+    Addbeginning(10,&head);
+    printList(head);
+    Addending(11,head);
+    printList(head);
+    deleteBehind(head);
+    printList(head);
+    deleteFront(head);
+    printList(head);
+    printMiddle(head);
+    countFrequency(head,0);
+    printNthELementfromend(head,4);
+    printList(head);
+    deleteNthelement(head,0);
+    printList(head);
+    reverseLinkedlist(&head);
+    printList(head);
+    deletingNodewithoutHead(head);
+    printList(head);
+    
+    deleteEntirelist(&head);
+    printList(head);
+    
+    return 0;
+}
