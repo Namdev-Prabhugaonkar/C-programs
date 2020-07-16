@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+void foo(){
+    printf("Im from foo!\n");
+}
+
+void foo2(void (*ptr)()){
+    printf("Im in foo2!\n");
+    (*ptr)();
+}
+
+int main(){
+    void (* ptr) (void) = &foo;
+    
+    foo2(ptr);
+    
+    
+    return 0;
+}
