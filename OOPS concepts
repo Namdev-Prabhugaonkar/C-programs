@@ -1,0 +1,199 @@
+/******************************************************************************
+Class Inheritence
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+class Car{
+  private:
+  
+  public:
+  int id;
+  string name;
+};
+
+
+class Honda : public Car{
+    public:
+    int idHonda;
+};
+
+int main()
+{
+    Honda City;
+    City.id=1;
+    City.name="XS";
+    City.idHonda = 3171;
+
+    cout<<City.id<<" "<<City.name<<" "<<City.idHonda<<endl;
+
+    return 0;
+}
+
+
+
+/******************************************************************************
+Class and Objects, Private and Public members , inside and outside class member
+function delclaration using scope resolution operator
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+class Car{
+    private:
+    int id;
+    string carName;
+    
+    public:
+    // int id;
+    // string carName;
+    
+    void setValues(int a,string name){
+        id=a;
+        carName = name;
+    }
+    
+    void printName();
+    
+    void printId(){
+        cout<<"Id: "<<id<<endl;
+    }
+};
+
+void Car::printName(){
+    cout<<"Car Name: "<<carName<<endl;
+}
+
+int main()
+{
+    Car obj;
+    // obj.id=1;
+    // obj.carName = "City";
+    
+    obj.setValues(2,"Zen");
+    obj.printId();
+    obj.printName();
+    return 0;
+}
+
+
+
+/******************************************************************************
+ Abstraction Demo:
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+class implementAbstraction{
+  private:
+  int a,b;
+  
+  public:
+  
+  void setValue(int x,int y){
+      a=x;
+      b=y;
+  }
+  
+  void printValue(){
+      cout<<"a="<<a<<" b="<<b<<endl;
+  }
+};
+
+int main()
+{
+    implementAbstraction obj;
+    obj.setValue(2,3);
+    obj.printValue();
+
+    return 0;
+}
+
+
+/******************************************************************************
+Destructors.
+*******************************************************************************/
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class String{
+    private:
+    char * s;
+    int size;
+    
+    public:
+    String(char const * s);
+    ~String();
+    
+};
+
+String::String(char const *c){
+    size = strlen(c);
+    s = (char *) malloc(sizeof(char)*(size));
+    strcpy(s,c);
+    cout<<s<<endl;
+}
+
+String::~String(){
+    free(s);
+}
+
+int main()
+{
+    String obj("Nam");
+
+    return 0;
+}
+
+
+/******************************************************************************
+Constructor Types:
+1. Default Constructor
+2. Paramtarised Constructor
+3. Copy Constructor
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+class baseClass{
+    private:
+    int x,y;
+    
+    public:
+    int a,b;
+    baseClass(){
+        cout<<"Default Constructor.\n";
+        a=10;
+        b=20;
+    }
+    
+    baseClass(int a,int b){
+        x=a;
+        y=b;
+    }
+    
+    int getX(){
+        return x;
+    }
+
+    int getY(){
+        return y;
+    }
+};
+
+int main(){
+    baseClass obj;
+    cout<<obj.a<<" "<<obj.b<<endl;
+    
+    baseClass baseClass(5,6);
+    cout<<"Paramtarised Constructor"<<endl;
+    cout<<"X="<<baseClass.getX()<<" Y="<<baseClass.getY()<<endl;
+    
+    
+    return 0;
+}
