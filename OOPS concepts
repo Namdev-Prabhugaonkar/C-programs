@@ -66,6 +66,48 @@ void Car::printName(){
     cout<<"Car Name: "<<carName<<endl;
 }
 
+/******************************************************************************
+Copy Constructor
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+class Point{
+  private:
+  int x;
+  int y;
+  
+  public:
+  Point(int x1, int y1){
+      x=x1;
+      y=y1;
+  }
+  
+  Point(const Point &p2){
+      x=p2.x;
+      y=p2.y;
+  }
+  
+  int getX(){
+      return x;
+  }
+  
+  int getY(){
+      return y;
+  }
+    
+};
+
+int main(){
+    Point p1(1,2);
+    Point p2 = p1;
+    
+    cout<<"P1: "<<p1.getX()<<" "<<p1.getY()<<endl;
+    cout<<"P2: "<<p2.getX()<<" "<<p2.getY()<<endl;
+    return 0;
+}
+
 int main()
 {
     Car obj;
