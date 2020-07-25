@@ -1,0 +1,24 @@
+/******************************************************************************
+Program to set a bits in a given range (n,m) where n<m
+*******************************************************************************/
+#include <stdio.h>
+#include <stdint.h>
+
+void setBitsinInterval(uint32_t number, int n,int m){
+    uint32_t maskN = 0xFFFFFFFF;
+    uint32_t maskM = 0xFFFFFFFF;
+    maskN >>= (31-m);
+    maskM <<= n;
+    number |=(maskM & maskN);
+    printf("Number after setting the bits in the interval (%d,%d) : %X",n,m,number);
+}
+
+
+int main()
+{
+    uint32_t number = 0XFF00000F;
+    printf("Number: %X\n",number);
+    setBitsinInterval(number, 6 , 15);
+
+    return 0;
+}
