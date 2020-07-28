@@ -1,0 +1,19 @@
+/******************************************************************************
+
+Bit set
+
+*******************************************************************************/
+#include <iostream>
+#include <bitset>
+
+using namespace std;
+int main()
+{
+   bitset<32> number(0XFFFFFFFF);
+   
+   cout<<number<<" "<<number.count()<<" "<<number.set()<<" "<<number.any()<<" "<<number.none()<<endl;
+   cout<<number.reset(12)<<endl;
+   cout<<number.flip(25);
+ 
+    return 0;
+}
