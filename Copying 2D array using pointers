@@ -1,0 +1,32 @@
+/******************************************************************************
+Copying 2D array using pointers
+*******************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+
+void makeCopy(int arr[][3], int r, int c){
+    int * copy = (int *) malloc(sizeof(int)*r*c);
+    int * ptr=(int *)arr;
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            *(copy + i*c+j) = *(ptr +i*c+j);
+        }
+    }
+    
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+         printf("%d ",*(copy+i*c+j));   
+        }
+        printf("\n");
+    }
+}
+
+
+int main()
+{
+    int arr[2][3]={{1,2,3},{4,5,2}};
+   
+    makeCopy(arr,2,3);
+
+    return 0;
+}
