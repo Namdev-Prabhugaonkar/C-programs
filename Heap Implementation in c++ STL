@@ -1,0 +1,42 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <vector>
+#include<bits/stdc++.h>  
+using namespace std;
+
+int main()
+{
+    vector<int> arr={8,2,4,1,5,5,1,70,43,12};
+    
+    make_heap(arr.begin(),arr.end());
+    cout<<arr.front()<<endl;
+    
+    arr.push_back(90);
+    push_heap(arr.begin(),arr.end());
+    cout<<arr.front()<<endl;
+    
+    pop_heap(arr.begin(),arr.end());
+    arr.pop_back();
+    cout<<arr.front()<<endl;
+
+    for(auto i:arr){
+        cout<<i<<" ";
+    }
+    cout<<endl;
+    
+    sort_heap(arr.begin(),arr.end());
+    for(auto i:arr){
+        cout<<i<<" ";
+    }
+    cout<<endl;
+    
+
+    return 0;
+}
