@@ -1,0 +1,48 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+void printPriorityQueueDescending(priority_queue<int> queue){
+  while(!queue.empty()){
+      cout<<queue.top()<<" ";
+      queue.pop();    
+  }
+}
+
+void printPriorityQueueAscending(priority_queue<int,vector<int>,greater<int>> queue){
+  while(!queue.empty()){
+      cout<<queue.top()<<" ";
+      queue.pop();    
+  }
+}
+
+int main()
+{
+    priority_queue<int> Descendingqueue;    
+    Descendingqueue.push(1);
+    Descendingqueue.push(13);
+    Descendingqueue.push(12);
+    Descendingqueue.push(21);
+    Descendingqueue.push(2);
+    
+    priority_queue<int, vector<int>,greater<int>> Ascendingqueue;
+    Ascendingqueue.push(1);
+    Ascendingqueue.push(13);
+    Ascendingqueue.push(12);
+    Ascendingqueue.push(21);
+    Ascendingqueue.push(2);
+    
+    printPriorityQueueDescending(Descendingqueue);
+    cout<<endl;
+    printPriorityQueueAscending(Ascendingqueue);
+    return 0;
+}
