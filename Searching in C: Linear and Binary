@@ -27,7 +27,7 @@ int main()
 #include <stdio.h>
 
 int binarySearch(int arr[],int low, int high, int element){
-     if(high>=1){
+     if(high>=low){
         int mid = low + (high-low)/2;
          if(arr[mid]==element){
              return mid;
